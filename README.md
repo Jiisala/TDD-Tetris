@@ -1,3 +1,5 @@
+This is my submission for the TDD MOOC Tetris exercise. Original README bellow.
+
 # [TDD MOOC](https://tdd.mooc.fi): Tetris
 
 In this exercise you will be implementing a Tetris game using Test-Driven Development (TDD). The first couple dozen
