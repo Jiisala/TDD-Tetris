@@ -9,9 +9,14 @@ export class Board {
     this.height = height;
     this.currentBlock = new Block(".")
     this.currentTick = 0
+    this.isFallig = false
   }
   drop(block){
-    this.currentBlock = block
+    if (!this.isFallig){
+      this.currentBlock = block
+      this.isFallig = true
+    }
+    else {throw ("already falling")}
   }
   tick(){
     this.currentTick += 1
