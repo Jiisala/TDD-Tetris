@@ -1,3 +1,4 @@
+
 import { Block } from "./Block.mjs";
 
 export class Board {
@@ -12,14 +13,28 @@ export class Board {
     this.isFallig = false
   }
   drop(block){
-    if (!this.isFallig){
+    if (!this.hasFalling()){
       this.currentBlock = block
-      this.isFallig = true
+      this.setFalling()
     }
     else {throw ("already falling")}
   }
   tick(){
-    this.currentTick += 1
+    if (!this.isBottom()){
+      this.currentTick += 1
+    }
+    else{
+      this.setFalling() 
+    }
+  }
+  setFalling(){
+    this.isFallig = !this.isFallig
+  }
+  hasFalling(){
+    return this.isFallig
+  }
+  isBottom(){
+    return this.currentTick === this.height -1
   }
   toString() {
     let board = ""
