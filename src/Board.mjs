@@ -11,7 +11,19 @@ export class Board {
     this.currentBlock = new Block(".")
     this.currentTick = 0
     this.isFallig = false
+    
+    this.board = new Array(this.width)
+    for (let i = 0; i<this.width; i++){
+      this.board[i] = new Array(this.height)
+    }
+    for (let j = 0; j < this.board.length; j++){
+      for (let k = 0; k < this.board[j].length; k++){
+        this.board[j][k] = "."
+      }
+
+    }
   }
+
   drop(block){
     if (!this.hasFalling()){
       this.currentBlock = block
@@ -20,12 +32,19 @@ export class Board {
     else {throw ("already falling")}
   }
   tick(){
-    if (!this.isBottom()){
+    if (!this.isBlocked()){
       this.currentTick += 1
     }
     else{
-      this.setFalling() 
+      this.setBlock()
+      this.setFalling()
+      this.currentTick = 0;
+      this.currentBlock = new Block(".")
+ 
     }
+  }
+  setBlock(){
+    this.board[this.currentTick][1] = this.currentBlock.color
   }
   setFalling(){
     this.isFallig = !this.isFallig
@@ -33,8 +52,9 @@ export class Board {
   hasFalling(){
     return this.isFallig
   }
-  isBottom(){
-    return this.currentTick === this.height -1
+  isBlocked(){
+    
+    return this.currentTick === this.height -1 || this.board[this.currentTick +1][1] !== "."
   }
   toString() {
     let board = ""
@@ -44,7 +64,7 @@ export class Board {
           board += this.currentBlock.color
         }
         else{
-          board += "."
+          board += this.board[j][k]
         }
       }
       board += "\n"
