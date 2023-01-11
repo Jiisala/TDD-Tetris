@@ -3,7 +3,17 @@ export class Tetromino{
     `.T.
     TTT
     ...`)
-
+    static I_SHAPE = new Tetromino(
+    `.....
+    .....
+    IIII.
+    .....
+    .....`)
+    static L_SHAPE = new Tetromino(
+    `.T.
+    TTT
+    ...`)
+    
     constructor(shape){
         this.shapeRaw = shape.replace(/\s+/g, '')
         this.size = Math.sqrt(this.shapeRaw.length)
