@@ -31,7 +31,5 @@ export class RotatingShape{
         shape += "\n"
         }
         return shape;
-    }
-    
-    
+    } 
 }
