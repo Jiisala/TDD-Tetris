@@ -1,3 +1,6 @@
+/*these rotete methods are horrible but I know a major refactoring is on the way 
+They will do for now*/
+
 export class Tetromino{
     static T_SHAPE = new Tetromino(
     `.T.
@@ -46,6 +49,7 @@ export class Tetromino{
         let rotated = this.shapeMatrix[0].map((val, index) => this.shapeMatrix.map(row => row[index]).reverse())
         return new Tetromino(rotated.toString().replaceAll(',',''), this.rotations)
     }
+
     rotateLeft(){
         if (this.rotations === 0){
             return this}
