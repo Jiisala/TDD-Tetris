@@ -1,13 +1,15 @@
 export class RotatingShape{
     constructor(shape){
         this.shapeRaw = shape.replace(/\s+/g, '')
-        this.shapeMatrix = new Array(3)
-        for (let i = 0; i<3; i++){
-        this.shapeMatrix[i] = new Array(3)
+        this.size = Math.sqrt(this.shapeRaw.length)
+
+        this.shapeMatrix = new Array(this.size)
+        for (let i = 0; i<this.size; i++){
+            this.shapeMatrix[i] = new Array(this.size)
         }
-        for (let j = 0; j < 3; j++){
-            for (let k = 0; k < 3; k++){
-                this.shapeMatrix[j][k] = this.shapeRaw[j*3+k]
+        for (let j = 0; j < this.size; j++){
+            for (let k = 0; k < this.size; k++){
+                this.shapeMatrix[j][k] = this.shapeRaw[j*this.size+k]
         }
 
         }
@@ -22,8 +24,8 @@ export class RotatingShape{
     }
     toString(matrix = this.shapeMatrix){
         let shape = ""
-        for (let j = 0; j < 3; j++){
-            for (let k = 0; k < 3; k++){
+        for (let j = 0; j < this.size; j++){
+            for (let k = 0; k < this.size; k++){
                 shape += matrix[j][k]
         }
         shape += "\n"
