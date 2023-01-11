@@ -9,9 +9,9 @@ export class Tetromino{
     IIII.
     .....
     .....`)
-    static L_SHAPE = new Tetromino(
-    `.T.
-    TTT
+    static O_SHAPE = new Tetromino(
+    `.OO
+    .OO
     ...`)
     
     constructor(shape){
